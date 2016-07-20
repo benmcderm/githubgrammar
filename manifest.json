@@ -1,16 +1,12 @@
 {
-  "manifest_version": 2,
-
   "name": "GitHub Grammar",
-  "description": "Select/highlight text on any GitHub repo that is misspelled or grammatically incorrect and quickly add it as a repo issue.",
   "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "dropdown.html"
-  },
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ]
+  "manifest_version": 2,
+  "description": "Select/highlight text on any GitHub repo that is misspelled or grammatically incorrect and quickly add it as a repo issue.",
+  "homepage_url": "https://github.com/benmcderm",
+  "content_scripts": [{
+      "js": ["jquery.js", "contentscript.js"],
+      "matches": ["https://github.com/*"]
+    }],
+  "web_accessible_resources": ["dropdown.js"]
 }
