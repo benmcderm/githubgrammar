@@ -5,11 +5,10 @@ function getSelectionText() {
     } else if (document.selection && document.selection.type != "Control") {
         text = document.selection.createRange().text;
     }
-    console.log(text);
-		sendIssue();
+		sendIssue(text);
 };
 
-function commentPayload(){
+function getIssuesUrl(){
 	return `${getUrl()}/issues`
 };
 
@@ -21,16 +20,18 @@ function getUrl(){
 	return found[1];
 };
 
-// function getComment() {
-// 	let commentHead = getSelectionText();
-// 	let comment = input
-// 	return comment;
-// };
+function revealDropdown() {
+	document.createElement(
+		"<div class=`gg-dropdown` style=`back` dropdown </div>"
+	);
+};
+
+
 
 document.onmousedown = getUrl;
 document.onmouseup = getSelectionText;
 
-function sendIssue() {
+function sendIssue(text) {
 	let xhr = new XMLHttpRequest();
 
 	xhr.onreadystatechange = function() {
@@ -45,8 +46,8 @@ function sendIssue() {
 		}
 	};
 
-	xhr.open("POST", `${commentPayload()}`, true);
-	xhr.send();
+	xhr.open("POST", `${getIssuesUrl()}`, true);
+	xhr.send(JSON.stringify({issue:{title: "Spelling Error", description:`${text}`}, username: "benmcderm"}));
 }
 
 // document.onmouseup = getComment;
