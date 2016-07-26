@@ -4,10 +4,14 @@
   "manifest_version": 2,
   "description": "Select/highlight text on any GitHub repo that is misspelled or grammatically incorrect and quickly add it as a repo issue.",
   "homepage_url": "https://github.com/benmcderm",
-  "permissions": ["identity", "https://github.com/*"],
+  "permissions": ["identity", "https://github.com/*","*://*.google.com/*","http://ajax.googleapis.com/",
+        "storage"],
   "content_scripts": [{
-      "js": ["jquery.js","contentscript.js","dropdown.js"],
+      "js": ["contentscript.js"],
       "matches": ["https://github.com/*"]
     }],
-  "web_accessible_resources": ["jquery.js","contentscript.js","dropdown.js"]
+    "background": {
+      "scripts": ["background.js"]
+    },
+  "web_accessible_resources": ["contentscript.js","dropdown.js", "script.js"]
 }
