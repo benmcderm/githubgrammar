@@ -1,17 +1,28 @@
 {
-  "name": "GitHub Grammar",
-  "version": "1.0",
   "manifest_version": 2,
-  "description": "Select/highlight text on any GitHub repo that is misspelled or grammatically incorrect and quickly add it as a repo issue.",
-  "homepage_url": "https://github.com/benmcderm",
-  "permissions": ["identity", "https://github.com/*","*://*.google.com/*","http://ajax.googleapis.com/",
-        "storage"],
-  "content_scripts": [{
-      "js": ["contentscript.js"],
-      "matches": ["https://github.com/*"]
-    }],
-    "background": {
-      "scripts": ["background.js"]
+  "name": "GitHub Grammar",
+  "version": "0.0.1",
+  "icons": {
+    "19":"img/icon-19px.png",
+    "38":"img/icon-38px.png",
+    "64":"img/icon-64px.png",
+    "128":"img/icon-128px.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19":"img/icon-19px.png",
+      "38":"img/icon-38px.png"
     },
-  "web_accessible_resources": ["contentscript.js","dropdown.js", "script.js"]
+    "default_popup": "popup.html"
+  },
+  "permissions": ["tabs", "identity", "storage", "https://avatars.githubusercontent.com/"],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": ["js/dropdown.js"],
+  "content_scripts": [{
+    "matches": ["https://github.com/*"],
+      "js": ["js/jquery.js","js/dropdown.js"]
+    }]
 }
