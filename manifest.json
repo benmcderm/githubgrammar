@@ -16,10 +16,6 @@
     "default_popup": "popup.html"
   },
   "permissions": ["tabs", "identity", "storage", "https://avatars.githubusercontent.com/"],
-  "background": {
-    "scripts": ["js/background.js"],
-    "persistent": false
-  },
   "web_accessible_resources": ["js/dropdown.js"],
   "content_scripts": [{
     "matches": ["https://github.com/*"],
