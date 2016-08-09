@@ -42,8 +42,7 @@ function toggleButton() {
         title: 'Spelling or Grammar Error Reported',
         body: `${selectedText}`,
       }),
-      success(response) {
-        console.log(response);
+      success() {
         $('.github-grammar').remove();
         window.getSelection().removeAllRanges();
       },
